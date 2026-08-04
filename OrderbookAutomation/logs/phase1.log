@@ -1,0 +1,201 @@
+2026-08-01 14:43:01,914 | INFO | Starting Phase 1 ingestion workflow
+2026-08-01 14:43:01,953 | INFO | Loaded workbook=raw_OB.xlsx sheet=Sheet1 rows=8 cols=27
+2026-08-01 14:43:01,973 | INFO | Loaded workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1 rows=4 cols=4
+2026-08-01 14:43:02,009 | INFO | Loaded workbook=07-30_inv.xlsx sheet=Sheet1 rows=16 cols=13
+2026-08-01 14:43:02,042 | INFO | Loaded workbook=Open_Order_Summary.xlsx sheet=Sheet1 rows=7 cols=21
+2026-08-01 14:43:02,099 | INFO | Loaded workbook=Buying_groups.xlsx sheet=Sheet1 rows=677 cols=2
+2026-08-01 14:43:02,151 | INFO | Loaded workbook=Awards.xlsx sheet=Sheet1 rows=129 cols=7
+2026-08-01 14:43:02,186 | INFO | Loaded workbook=CIP.xlsx sheet=Sheet1 rows=10 cols=4
+2026-08-01 14:43:02,209 | INFO | Loaded workbook=sales_summ.xlsx sheet=Sheet1 rows=1 cols=37
+2026-08-01 14:43:02,338 | INFO | Loaded workbook=Strend.xlsx sheet=Sheet1 rows=101 cols=66
+2026-08-01 14:43:02,376 | INFO | Loaded workbook=Headers.xlsx sheet=Sheet1 rows=5 cols=37
+2026-08-01 14:43:02,392 | WARNING | EMPTY_COLUMNS | workbook=raw_OB.xlsx | worksheet=Sheet1 | Completely blank columns: ['Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 14:43:02,392 | WARNING | EMPTY_COLUMNS | workbook=sales_summ.xlsx | worksheet=Sheet1 | Completely blank columns: ['Action', 'Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 14:43:02,392 | WARNING | BLANK_HEADERS | workbook=Strend.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 14:43:02,393 | WARNING | BLANK_HEADERS | workbook=Headers.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 14:43:02,393 | INFO | EMPTY_ROWS | workbook=Headers.xlsx | worksheet=Sheet1 | Completely blank rows: 1
+2026-08-01 14:43:02,405 | INFO | Profiled workbook=raw_OB.xlsx sheet=Sheet1
+2026-08-01 14:43:02,407 | INFO | Profiled workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1
+2026-08-01 14:43:02,411 | INFO | Profiled workbook=07-30_inv.xlsx sheet=Sheet1
+2026-08-01 14:43:02,418 | INFO | Profiled workbook=Open_Order_Summary.xlsx sheet=Sheet1
+2026-08-01 14:43:02,420 | INFO | Profiled workbook=Buying_groups.xlsx sheet=Sheet1
+2026-08-01 14:43:02,422 | INFO | Profiled workbook=Awards.xlsx sheet=Sheet1
+2026-08-01 14:43:02,424 | INFO | Profiled workbook=CIP.xlsx sheet=Sheet1
+2026-08-01 14:43:02,435 | INFO | Profiled workbook=sales_summ.xlsx sheet=Sheet1
+2026-08-01 14:43:02,453 | INFO | Profiled workbook=Strend.xlsx sheet=Sheet1
+2026-08-01 14:43:02,461 | INFO | Profiled workbook=Headers.xlsx sheet=Sheet1
+2026-08-01 14:43:02,523 | INFO | Wrote Workbook_Profile.xlsx to D:\Jayanth\OrderbookAutomation\output\Workbook_Profile.xlsx
+2026-08-01 14:43:02,543 | INFO | Wrote data dictionary to D:\Jayanth\OrderbookAutomation\docs\DATA_DICTIONARY.md
+2026-08-01 14:43:02,543 | INFO | Join key candidate=NDC workbook_count=7 worksheet_count=7 confidence=70.0
+2026-08-01 14:43:02,543 | INFO | Join key candidate=Material Number workbook_count=2 worksheet_count=2 confidence=20.0
+2026-08-01 14:43:02,544 | INFO | Join key candidate=Customer workbook_count=7 worksheet_count=7 confidence=70.0
+2026-08-01 14:43:02,544 | INFO | Join key candidate=Sold-to Party workbook_count=5 worksheet_count=5 confidence=50.0
+2026-08-01 14:43:02,544 | INFO | Join key candidate=Lookup workbook_count=4 worksheet_count=4 confidence=40.0
+2026-08-01 14:43:02,544 | INFO | Join key candidate=SKU workbook_count=2 worksheet_count=2 confidence=20.0
+2026-08-01 14:43:02,544 | INFO | Join key candidate=Sales Order workbook_count=4 worksheet_count=4 confidence=40.0
+2026-08-01 14:43:02,546 | INFO | Wrote join key analysis to D:\Jayanth\OrderbookAutomation\docs\JOIN_KEY_ANALYSIS.md
+2026-08-01 14:43:02,547 | INFO | Phase 1 completed successfully in 0.00 seconds
+2026-08-01 16:20:05,917 | INFO | Starting Phase 1 ingestion workflow
+2026-08-01 16:20:05,950 | INFO | Loaded workbook=raw_OB.xlsx sheet=Sheet1 rows=8 cols=27
+2026-08-01 16:20:05,961 | INFO | Loaded workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1 rows=4 cols=4
+2026-08-01 16:20:05,976 | INFO | Loaded workbook=07-30_inv.xlsx sheet=Sheet1 rows=16 cols=13
+2026-08-01 16:20:06,005 | INFO | Loaded workbook=Open_Order_Summary.xlsx sheet=Sheet1 rows=5 cols=21
+2026-08-01 16:20:06,033 | INFO | Loaded workbook=Buying_groups.xlsx sheet=Sheet1 rows=677 cols=2
+2026-08-01 16:20:06,057 | INFO | Loaded workbook=Awards.xlsx sheet=Sheet1 rows=129 cols=7
+2026-08-01 16:20:06,070 | INFO | Loaded workbook=CIP.xlsx sheet=Sheet1 rows=10 cols=4
+2026-08-01 16:20:06,081 | INFO | Loaded workbook=sales_summ.xlsx sheet=Sheet1 rows=1 cols=37
+2026-08-01 16:20:06,175 | INFO | Loaded workbook=Strend.xlsx sheet=Sheet1 rows=101 cols=66
+2026-08-01 16:20:06,211 | INFO | Loaded workbook=Headers.xlsx sheet=Sheet1 rows=4 cols=37
+2026-08-01 16:20:06,224 | WARNING | EMPTY_COLUMNS | workbook=raw_OB.xlsx | worksheet=Sheet1 | Completely blank columns: ['Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 16:20:06,225 | WARNING | DUPLICATE_HEADERS | workbook=Open_Order_Summary.xlsx | worksheet=Sheet1 | Duplicate raw headers: ['7/24/26']
+2026-08-01 16:20:06,225 | WARNING | EMPTY_COLUMNS | workbook=sales_summ.xlsx | worksheet=Sheet1 | Completely blank columns: ['Action', 'Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 16:20:06,225 | WARNING | BLANK_HEADERS | workbook=Strend.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 16:20:06,225 | WARNING | BLANK_HEADERS | workbook=Headers.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 16:20:06,239 | INFO | Profiled workbook=raw_OB.xlsx sheet=Sheet1
+2026-08-01 16:20:06,241 | INFO | Profiled workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1
+2026-08-01 16:20:06,244 | INFO | Profiled workbook=07-30_inv.xlsx sheet=Sheet1
+2026-08-01 16:20:06,250 | INFO | Profiled workbook=Open_Order_Summary.xlsx sheet=Sheet1
+2026-08-01 16:20:06,252 | INFO | Profiled workbook=Buying_groups.xlsx sheet=Sheet1
+2026-08-01 16:20:06,254 | INFO | Profiled workbook=Awards.xlsx sheet=Sheet1
+2026-08-01 16:20:06,256 | INFO | Profiled workbook=CIP.xlsx sheet=Sheet1
+2026-08-01 16:20:06,264 | INFO | Profiled workbook=sales_summ.xlsx sheet=Sheet1
+2026-08-01 16:20:06,279 | INFO | Profiled workbook=Strend.xlsx sheet=Sheet1
+2026-08-01 16:20:06,286 | INFO | Profiled workbook=Headers.xlsx sheet=Sheet1
+2026-08-01 16:20:06,353 | INFO | Wrote Workbook_Profile.xlsx to D:\Jayanth\OrderbookAutomation\output\Workbook_Profile.xlsx
+2026-08-01 16:20:06,375 | INFO | Wrote data dictionary to D:\Jayanth\OrderbookAutomation\docs\DATA_DICTIONARY.md
+2026-08-01 16:20:06,375 | INFO | Join key candidate=NDC workbook_count=7 worksheet_count=7 confidence=70.0
+2026-08-01 16:20:06,376 | INFO | Join key candidate=Material Number workbook_count=2 worksheet_count=2 confidence=20.0
+2026-08-01 16:20:06,376 | INFO | Join key candidate=Customer workbook_count=6 worksheet_count=6 confidence=60.0
+2026-08-01 16:20:06,376 | INFO | Join key candidate=Sold-to Party workbook_count=4 worksheet_count=4 confidence=40.0
+2026-08-01 16:20:06,376 | INFO | Join key candidate=Lookup workbook_count=3 worksheet_count=3 confidence=30.0
+2026-08-01 16:20:06,376 | INFO | Join key candidate=SKU workbook_count=1 worksheet_count=1 confidence=10.0
+2026-08-01 16:20:06,376 | INFO | Join key candidate=Sales Order workbook_count=3 worksheet_count=3 confidence=30.0
+2026-08-01 16:20:06,378 | INFO | Wrote join key analysis to D:\Jayanth\OrderbookAutomation\docs\JOIN_KEY_ANALYSIS.md
+2026-08-01 16:20:51,338 | INFO | Starting Phase 1 ingestion workflow
+2026-08-01 16:20:51,359 | INFO | Loaded workbook=raw_OB.xlsx sheet=Sheet1 rows=8 cols=27
+2026-08-01 16:20:51,368 | INFO | Loaded workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1 rows=4 cols=4
+2026-08-01 16:20:51,384 | INFO | Loaded workbook=07-30_inv.xlsx sheet=Sheet1 rows=16 cols=13
+2026-08-01 16:20:51,407 | INFO | Loaded workbook=Open_Order_Summary.xlsx sheet=Sheet1 rows=5 cols=21
+2026-08-01 16:20:51,443 | INFO | Loaded workbook=Buying_groups.xlsx sheet=Sheet1 rows=677 cols=2
+2026-08-01 16:20:51,468 | INFO | Loaded workbook=Awards.xlsx sheet=Sheet1 rows=129 cols=7
+2026-08-01 16:20:51,479 | INFO | Loaded workbook=CIP.xlsx sheet=Sheet1 rows=10 cols=4
+2026-08-01 16:20:51,493 | INFO | Loaded workbook=sales_summ.xlsx sheet=Sheet1 rows=1 cols=37
+2026-08-01 16:20:51,622 | INFO | Loaded workbook=Strend.xlsx sheet=Sheet1 rows=101 cols=66
+2026-08-01 16:20:51,641 | INFO | Loaded workbook=Headers.xlsx sheet=Sheet1 rows=4 cols=37
+2026-08-01 16:20:51,655 | WARNING | EMPTY_COLUMNS | workbook=raw_OB.xlsx | worksheet=Sheet1 | Completely blank columns: ['Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 16:20:51,655 | WARNING | DUPLICATE_HEADERS | workbook=Open_Order_Summary.xlsx | worksheet=Sheet1 | Duplicate raw headers: ['7/24/26']
+2026-08-01 16:20:51,655 | WARNING | EMPTY_COLUMNS | workbook=sales_summ.xlsx | worksheet=Sheet1 | Completely blank columns: ['Action', 'Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 16:20:51,656 | WARNING | BLANK_HEADERS | workbook=Strend.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 16:20:51,656 | WARNING | BLANK_HEADERS | workbook=Headers.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 16:20:51,664 | INFO | Profiled workbook=raw_OB.xlsx sheet=Sheet1
+2026-08-01 16:20:51,666 | INFO | Profiled workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1
+2026-08-01 16:20:51,669 | INFO | Profiled workbook=07-30_inv.xlsx sheet=Sheet1
+2026-08-01 16:20:51,674 | INFO | Profiled workbook=Open_Order_Summary.xlsx sheet=Sheet1
+2026-08-01 16:20:51,676 | INFO | Profiled workbook=Buying_groups.xlsx sheet=Sheet1
+2026-08-01 16:20:51,679 | INFO | Profiled workbook=Awards.xlsx sheet=Sheet1
+2026-08-01 16:20:51,681 | INFO | Profiled workbook=CIP.xlsx sheet=Sheet1
+2026-08-01 16:20:51,690 | INFO | Profiled workbook=sales_summ.xlsx sheet=Sheet1
+2026-08-01 16:20:51,707 | INFO | Profiled workbook=Strend.xlsx sheet=Sheet1
+2026-08-01 16:20:51,716 | INFO | Profiled workbook=Headers.xlsx sheet=Sheet1
+2026-08-01 16:20:51,800 | INFO | Wrote Workbook_Profile.xlsx to D:\Jayanth\OrderbookAutomation\output\Workbook_Profile.xlsx
+2026-08-01 16:20:51,825 | INFO | Wrote data dictionary to D:\Jayanth\OrderbookAutomation\docs\DATA_DICTIONARY.md
+2026-08-01 16:20:51,825 | INFO | Join key candidate=NDC workbook_count=7 worksheet_count=7 confidence=70.0
+2026-08-01 16:20:51,826 | INFO | Join key candidate=Material Number workbook_count=2 worksheet_count=2 confidence=20.0
+2026-08-01 16:20:51,826 | INFO | Join key candidate=Customer workbook_count=6 worksheet_count=6 confidence=60.0
+2026-08-01 16:20:51,826 | INFO | Join key candidate=Sold-to Party workbook_count=4 worksheet_count=4 confidence=40.0
+2026-08-01 16:20:51,826 | INFO | Join key candidate=Lookup workbook_count=3 worksheet_count=3 confidence=30.0
+2026-08-01 16:20:51,827 | INFO | Join key candidate=SKU workbook_count=1 worksheet_count=1 confidence=10.0
+2026-08-01 16:20:51,827 | INFO | Join key candidate=Sales Order workbook_count=3 worksheet_count=3 confidence=30.0
+2026-08-01 16:20:51,827 | INFO | Wrote join key analysis to D:\Jayanth\OrderbookAutomation\docs\JOIN_KEY_ANALYSIS.md
+2026-08-01 16:22:55,866 | INFO | Starting Phase 1 ingestion workflow
+2026-08-01 16:22:55,885 | INFO | Loaded workbook=raw_OB.xlsx sheet=Sheet1 rows=8 cols=27
+2026-08-01 16:22:55,893 | INFO | Loaded workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1 rows=4 cols=4
+2026-08-01 16:22:55,905 | INFO | Loaded workbook=07-30_inv.xlsx sheet=Sheet1 rows=16 cols=13
+2026-08-01 16:22:55,921 | INFO | Loaded workbook=Open_Order_Summary.xlsx sheet=Sheet1 rows=7 cols=21
+2026-08-01 16:22:55,948 | INFO | Loaded workbook=Buying_groups.xlsx sheet=Sheet1 rows=677 cols=2
+2026-08-01 16:22:55,970 | INFO | Loaded workbook=Awards.xlsx sheet=Sheet1 rows=129 cols=7
+2026-08-01 16:22:55,980 | INFO | Loaded workbook=CIP.xlsx sheet=Sheet1 rows=10 cols=4
+2026-08-01 16:22:55,994 | INFO | Loaded workbook=sales_summ.xlsx sheet=Sheet1 rows=1 cols=37
+2026-08-01 16:22:56,173 | INFO | Loaded workbook=Strend.xlsx sheet=Sheet1 rows=101 cols=66
+2026-08-01 16:22:56,188 | INFO | Loaded workbook=Headers.xlsx sheet=Sheet1 rows=4 cols=37
+2026-08-01 16:22:56,199 | WARNING | EMPTY_COLUMNS | workbook=raw_OB.xlsx | worksheet=Sheet1 | Completely blank columns: ['Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 16:22:56,199 | WARNING | EMPTY_COLUMNS | workbook=sales_summ.xlsx | worksheet=Sheet1 | Completely blank columns: ['Action', 'Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 16:22:56,199 | WARNING | BLANK_HEADERS | workbook=Strend.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 16:22:56,199 | WARNING | BLANK_HEADERS | workbook=Headers.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 16:22:56,206 | INFO | Profiled workbook=raw_OB.xlsx sheet=Sheet1
+2026-08-01 16:22:56,208 | INFO | Profiled workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1
+2026-08-01 16:22:56,211 | INFO | Profiled workbook=07-30_inv.xlsx sheet=Sheet1
+2026-08-01 16:22:56,216 | INFO | Profiled workbook=Open_Order_Summary.xlsx sheet=Sheet1
+2026-08-01 16:22:56,218 | INFO | Profiled workbook=Buying_groups.xlsx sheet=Sheet1
+2026-08-01 16:22:56,221 | INFO | Profiled workbook=Awards.xlsx sheet=Sheet1
+2026-08-01 16:22:56,223 | INFO | Profiled workbook=CIP.xlsx sheet=Sheet1
+2026-08-01 16:22:56,230 | INFO | Profiled workbook=sales_summ.xlsx sheet=Sheet1
+2026-08-01 16:22:56,246 | INFO | Profiled workbook=Strend.xlsx sheet=Sheet1
+2026-08-01 16:22:56,254 | INFO | Profiled workbook=Headers.xlsx sheet=Sheet1
+2026-08-01 16:22:56,336 | INFO | Wrote Workbook_Profile.xlsx to D:\Jayanth\OrderbookAutomation\output\Workbook_Profile.xlsx
+2026-08-01 16:22:56,355 | INFO | Wrote data dictionary to D:\Jayanth\OrderbookAutomation\docs\DATA_DICTIONARY.md
+2026-08-01 16:22:56,356 | INFO | Join key candidate=NDC workbook_count=7 worksheet_count=7 confidence=70.0
+2026-08-01 16:22:56,356 | INFO | Join key candidate=Material Number workbook_count=2 worksheet_count=2 confidence=20.0
+2026-08-01 16:22:56,356 | INFO | Join key candidate=Customer workbook_count=7 worksheet_count=7 confidence=70.0
+2026-08-01 16:22:56,356 | INFO | Join key candidate=Sold-to Party workbook_count=5 worksheet_count=5 confidence=50.0
+2026-08-01 16:22:56,356 | INFO | Join key candidate=Lookup workbook_count=4 worksheet_count=4 confidence=40.0
+2026-08-01 16:22:56,357 | INFO | Join key candidate=SKU workbook_count=2 worksheet_count=2 confidence=20.0
+2026-08-01 16:22:56,357 | INFO | Join key candidate=Sales Order workbook_count=4 worksheet_count=4 confidence=40.0
+2026-08-01 16:22:56,357 | INFO | Wrote join key analysis to D:\Jayanth\OrderbookAutomation\docs\JOIN_KEY_ANALYSIS.md
+2026-08-01 16:22:56,364 | WARNING | Duplicate inventory NDC values detected: 12
+2026-08-01 16:22:56,370 | WARNING | Invalid SKU segment encountered: 64380-201-01
+2026-08-01 16:22:56,370 | WARNING | Invalid SKU segment encountered: 64380-161-01
+2026-08-01 16:22:56,371 | WARNING | Invalid SKU segment encountered: 64380-187-01
+2026-08-01 16:22:56,371 | WARNING | Invalid SKU segment encountered: 64380-161-01
+2026-08-01 16:22:56,371 | WARNING | Invalid SKU segment encountered: 64380-161-01
+2026-08-01 16:22:56,371 | WARNING | Invalid SKU segment encountered: 64380-201-01
+2026-08-01 16:22:56,372 | WARNING | Invalid SKU values that could not be converted to NDC: 6
+2026-08-01 16:22:56,385 | INFO | Derived inventory stats | inventory_rows=4 | allocated_rows=0 | unique_ndcs=4 | missing_inventory=0 | missing_allocations=4
+2026-08-01 16:22:56,388 | INFO | Lookup key stats | total_rows=1 | values_normalized=0 | successful_matches=1 | unmatched_records=0 | duplicate_lookup_keys=0
+2026-08-01 16:22:56,392 | INFO | MOQ validation stats | total_rows=1 | values_normalized=0 | successful_matches=1 | unmatched_records=0 | duplicate_lookup_keys=0
+2026-08-01 16:22:56,538 | INFO | Wrote Phase 2 derived workbook to D:\Jayanth\OrderbookAutomation\output\Derived_Data.xlsx
+2026-08-01 16:22:56,538 | INFO | Phase 2 completed successfully. Derived workbook saved to D:\Jayanth\OrderbookAutomation\output\Derived_Data.xlsx
+2026-08-01 16:22:56,539 | INFO | Phase 1 completed successfully in 0.67 seconds
+2026-08-01 16:23:43,495 | INFO | Starting Phase 1 ingestion workflow
+2026-08-01 16:23:43,514 | INFO | Loaded workbook=raw_OB.xlsx sheet=Sheet1 rows=8 cols=27
+2026-08-01 16:23:43,524 | INFO | Loaded workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1 rows=4 cols=4
+2026-08-01 16:23:43,538 | INFO | Loaded workbook=07-30_inv.xlsx sheet=Sheet1 rows=16 cols=13
+2026-08-01 16:23:43,555 | INFO | Loaded workbook=Open_Order_Summary.xlsx sheet=Sheet1 rows=7 cols=21
+2026-08-01 16:23:43,591 | INFO | Loaded workbook=Buying_groups.xlsx sheet=Sheet1 rows=677 cols=2
+2026-08-01 16:23:43,626 | INFO | Loaded workbook=Awards.xlsx sheet=Sheet1 rows=129 cols=7
+2026-08-01 16:23:43,653 | INFO | Loaded workbook=CIP.xlsx sheet=Sheet1 rows=10 cols=4
+2026-08-01 16:23:43,672 | INFO | Loaded workbook=sales_summ.xlsx sheet=Sheet1 rows=1 cols=37
+2026-08-01 16:23:43,811 | INFO | Loaded workbook=Strend.xlsx sheet=Sheet1 rows=101 cols=66
+2026-08-01 16:23:43,829 | INFO | Loaded workbook=Headers.xlsx sheet=Sheet1 rows=4 cols=37
+2026-08-01 16:23:43,843 | WARNING | EMPTY_COLUMNS | workbook=raw_OB.xlsx | worksheet=Sheet1 | Completely blank columns: ['Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 16:23:43,844 | WARNING | EMPTY_COLUMNS | workbook=sales_summ.xlsx | worksheet=Sheet1 | Completely blank columns: ['Action', 'Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-01 16:23:43,844 | WARNING | BLANK_HEADERS | workbook=Strend.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 16:23:43,844 | WARNING | BLANK_HEADERS | workbook=Headers.xlsx | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-01 16:23:43,853 | INFO | Profiled workbook=raw_OB.xlsx sheet=Sheet1
+2026-08-01 16:23:43,855 | INFO | Profiled workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1
+2026-08-01 16:23:43,858 | INFO | Profiled workbook=07-30_inv.xlsx sheet=Sheet1
+2026-08-01 16:23:43,863 | INFO | Profiled workbook=Open_Order_Summary.xlsx sheet=Sheet1
+2026-08-01 16:23:43,864 | INFO | Profiled workbook=Buying_groups.xlsx sheet=Sheet1
+2026-08-01 16:23:43,868 | INFO | Profiled workbook=Awards.xlsx sheet=Sheet1
+2026-08-01 16:23:43,870 | INFO | Profiled workbook=CIP.xlsx sheet=Sheet1
+2026-08-01 16:23:43,877 | INFO | Profiled workbook=sales_summ.xlsx sheet=Sheet1
+2026-08-01 16:23:43,892 | INFO | Profiled workbook=Strend.xlsx sheet=Sheet1
+2026-08-01 16:23:43,900 | INFO | Profiled workbook=Headers.xlsx sheet=Sheet1
+2026-08-01 16:23:43,979 | INFO | Wrote Workbook_Profile.xlsx to D:\Jayanth\OrderbookAutomation\output\Workbook_Profile.xlsx
+2026-08-01 16:23:44,008 | INFO | Wrote data dictionary to D:\Jayanth\OrderbookAutomation\docs\DATA_DICTIONARY.md
+2026-08-01 16:23:44,010 | INFO | Join key candidate=NDC workbook_count=7 worksheet_count=7 confidence=70.0
+2026-08-01 16:23:44,010 | INFO | Join key candidate=Material Number workbook_count=2 worksheet_count=2 confidence=20.0
+2026-08-01 16:23:44,011 | INFO | Join key candidate=Customer workbook_count=7 worksheet_count=7 confidence=70.0
+2026-08-01 16:23:44,011 | INFO | Join key candidate=Sold-to Party workbook_count=5 worksheet_count=5 confidence=50.0
+2026-08-01 16:23:44,011 | INFO | Join key candidate=Lookup workbook_count=4 worksheet_count=4 confidence=40.0
+2026-08-01 16:23:44,012 | INFO | Join key candidate=SKU workbook_count=2 worksheet_count=2 confidence=20.0
+2026-08-01 16:23:44,012 | INFO | Join key candidate=Sales Order workbook_count=4 worksheet_count=4 confidence=40.0
+2026-08-01 16:23:44,013 | INFO | Wrote join key analysis to D:\Jayanth\OrderbookAutomation\docs\JOIN_KEY_ANALYSIS.md
+2026-08-01 16:23:44,016 | WARNING | Duplicate inventory NDC values detected: 12
+2026-08-01 16:23:44,025 | WARNING | Missing inventory for allocated NDC values: 3
+2026-08-01 16:23:44,031 | INFO | Derived inventory stats | inventory_rows=4 | allocated_rows=3 | unique_ndcs=7 | missing_inventory=3 | missing_allocations=4
+2026-08-01 16:23:44,037 | INFO | Lookup key stats | total_rows=1 | values_normalized=0 | successful_matches=1 | unmatched_records=0 | duplicate_lookup_keys=0
+2026-08-01 16:23:44,043 | INFO | MOQ validation stats | total_rows=1 | values_normalized=0 | successful_matches=1 | unmatched_records=0 | duplicate_lookup_keys=0
+2026-08-01 16:23:44,228 | INFO | Wrote Phase 2 derived workbook to D:\Jayanth\OrderbookAutomation\output\Derived_Data.xlsx
+2026-08-01 16:23:44,229 | INFO | Phase 2 completed successfully. Derived workbook saved to D:\Jayanth\OrderbookAutomation\output\Derived_Data.xlsx
+2026-08-01 16:23:44,229 | INFO | Phase 1 completed successfully in 0.73 seconds
