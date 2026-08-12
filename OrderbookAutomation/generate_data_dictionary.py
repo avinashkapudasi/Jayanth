@@ -9,7 +9,9 @@ from typing import Iterable
 import openpyxl
 import pandas as pd
 
-ROOT = Path(r"D:\Jayanth")
+# Resolve the data directory relative to this script's location so the
+# project works on any machine, regardless of where it is checked out.
+ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "DATA_DICTIONARY.md"
 WORKBOOKS = sorted(ROOT.rglob("*.xlsx"))
 

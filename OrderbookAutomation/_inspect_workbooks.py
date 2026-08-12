@@ -1,10 +1,15 @@
 import pandas as pd
 from pathlib import Path
+
+# Resolve the data directory relative to this script's location so the
+# project works on any machine, regardless of where it is checked out.
+ROOT = Path(__file__).resolve().parent.parent
+
 paths = [
-    Path(r'D:\Jayanth\Headers.xlsx'),
-    Path(r'D:\Jayanth\POB.xlsx'),
-    Path(r'D:\Jayanth\sales_summ.xlsx'),
-    Path(r'D:\Jayanth\Buying_groups.xlsx'),
+    ROOT / 'Headers.xlsx',
+    ROOT / 'POB.xlsx',
+    ROOT / 'sales_summ.xlsx',
+    ROOT / 'Buying_groups.xlsx',
 ]
 for path in paths:
     print(f'FILE: {path.name}')
