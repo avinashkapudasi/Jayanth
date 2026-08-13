@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, Sequence
@@ -146,13 +147,16 @@ def get_default_config() -> AppConfig:
     if not input_dir.exists() or not any(input_dir.glob("*.xlsx")):
         if any(project_root.glob("*.xlsx")):
             input_dir = project_root
-        elif any(project_root.parent.glob("*.xlsx")):
+        elif not getattr(sys, "frozen", False) and any(project_root.parent.glob("*.xlsx")):
             # Development convenience only: supports the current workspace
             # layout where sample workbooks live one folder above the
-            # application folder. Packaged/production layouts are expected
-            # to use <APPLICATION_ROOT>/input/ or place files directly
-            # alongside the executable, both of which are already handled
-            # above.
+            # application folder. This fallback is explicitly disabled when
+            # running as a packaged/frozen EXE (see the `sys.frozen` guard
+            # above) so a client machine can never silently discover
+            # unrelated Excel files one level above the install folder.
+            # Packaged/production layouts are expected to use
+            # <APPLICATION_ROOT>/input/ or place files directly alongside
+            # the executable, both of which are already handled above.
             input_dir = project_root.parent
 
     # Hints only, not hardcoded join behavior.

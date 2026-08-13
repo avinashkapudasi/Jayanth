@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 import sys
 
-from config import get_default_config
+from config import AppConfig, get_default_config
 from modules.derived_dataset_manager import run_phase2
 from modules.dictionary_builder import build_data_dictionary_markdown
 from modules.loader import load_workbooks
@@ -24,8 +24,13 @@ def _first_sheet_dataframe(loaded_workbooks, workbook_key: str):
     return next(iter(workbook_data.worksheets.values())).dataframe
 
 
-def run_phase1() -> None:
-    """Run the full pipeline: Phase 1 ingestion, Phase 2 derived datasets, Phase 3 business master."""
+def run_phase1() -> "AppConfig":
+    """Run the full pipeline: Phase 1 ingestion, Phase 2 derived datasets, Phase 3 business master.
+
+    Returns the resolved ``AppConfig`` so the entry point can report the
+    output folder location and log file path to the business user without
+    re-deriving them.
+    """
     config = get_default_config()
 
     ensure_directory(config.output_dir)
@@ -83,6 +88,8 @@ def run_phase1() -> None:
 
         logger.info("Phase 1 completed successfully in %.2f seconds", timer.elapsed_seconds)
 
+    return config
+
 
 def run_phase3(loaded_workbooks, config, logger):
     """Run Phase 3: build the Business Master Dataset from the canonical orderbook source.
@@ -125,7 +132,7 @@ def main() -> int:
     log file so support staff can diagnose issues.
     """
     try:
-        run_phase1()
+        config = run_phase1()
     except SourceDiscoveryError as exc:
         print(f"\nERROR: {exc}\n")
         return 1
@@ -133,9 +140,18 @@ def main() -> int:
         print(f"\nERROR: {exc}\nReview the log file in the 'logs' folder for details.\n")
         return 1
     except Exception as exc:  # noqa: BLE001 - top-level safety net for business users
-        logging.getLogger(__name__).exception("Unhandled exception during pipeline execution")
+        # Use the SAME logger instance configured in setup_logging() (name
+        # "orderbook_automation_phase1"), not a module-level logger, so the
+        # full traceback is guaranteed to reach logs/phase1.log rather than
+        # being silently dropped (the root logger has no file handler).
+        logging.getLogger("orderbook_automation_phase1").exception(
+            "Unhandled exception during pipeline execution"
+        )
         print(f"\nAn unexpected error occurred: {exc}\nReview the log file in the 'logs' folder for details.\n")
         return 1
+
+    print("\nOrderbook processing completed successfully.")
+    print(f"Output folder:\n{config.output_dir}\n")
     return 0
 
 

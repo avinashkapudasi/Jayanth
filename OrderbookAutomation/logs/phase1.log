@@ -1544,3 +1544,92 @@
 2026-08-14 00:41:59,534 | INFO | Wrote final POB workbook to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\POB.xlsx
 2026-08-14 00:41:59,534 | INFO | Phase 4 completed successfully. Sales Summary saved to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\Sales_Summary.xlsx | POB saved to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\POB.xlsx
 2026-08-14 00:41:59,534 | INFO | Phase 1 completed successfully in 1.29 seconds
+2026-08-14 01:29:50,163 | INFO | Starting Phase 1 ingestion workflow
+2026-08-14 01:29:50,179 | INFO | Application root=G:\Support\orderbook\Jayanth\OrderbookAutomation | input_dir=G:\Support\orderbook\Jayanth
+2026-08-14 01:29:50,262 | INFO | Discovery scan | file=07-30_inv.xlsx | sheet=Sheet1 | header_row=0 | header_count=13
+2026-08-14 01:29:50,345 | INFO | Discovery scan | file=Awards.xlsx | sheet=Sheet1 | header_row=0 | header_count=7
+2026-08-14 01:29:50,412 | INFO | Discovery scan | file=Buying_groups.xlsx | sheet=Sheet1 | header_row=0 | header_count=2
+2026-08-14 01:29:50,442 | INFO | Discovery scan | file=CIP.xlsx | sheet=Sheet1 | header_row=0 | header_count=4
+2026-08-14 01:29:50,500 | INFO | Discovery scan | file=Mat_Desc,_MOQ_,_Material_#.xlsx | sheet=Sheet1 | header_row=0 | header_count=4
+2026-08-14 01:29:50,520 | INFO | Discovery scan | file=Open_Order_Summary.xlsx | sheet=Sheet1 | header_row=3 | header_count=21
+2026-08-14 01:29:50,577 | INFO | Discovery scan | file=POB.xlsx | sheet=Sheet1 | header_row=0 | header_count=16
+2026-08-14 01:29:50,615 | INFO | Discovery scan | file=raw_OB.xlsx | sheet=UOB | header_row=0 | header_count=34
+2026-08-14 01:29:50,654 | INFO | Discovery scan | file=sales_summ.xlsx | sheet=Sheet1 | header_row=0 | header_count=37
+2026-08-14 01:29:50,722 | INFO | Discovery scan | file=sampo.xlsx | sheet=Orderbook | header_row=0 | header_count=37
+2026-08-14 01:29:50,761 | INFO | Discovery scan | file=sampo.xlsx | sheet=Summary | header_row=0 | header_count=16
+2026-08-14 01:29:50,807 | INFO | Discovery scan | file=Strend.xlsx | sheet=Sheet1 | header_row=3 | header_count=66
+2026-08-14 01:29:50,807 | WARNING | Skipping unreadable workbook '~$sampo.xlsx': [Errno 13] Permission denied: 'G:\\Support\\orderbook\\Jayanth\\~$sampo.xlsx'
+2026-08-14 01:29:50,807 | INFO | Resolved source 'orderbook' (Orderbook) -> file=raw_OB.xlsx | sheet=UOB
+2026-08-14 01:29:50,807 | INFO | Resolved source 'moq' (Material Description / MOQ Master) -> file=Mat_Desc,_MOQ_,_Material_#.xlsx | sheet=Sheet1
+2026-08-14 01:29:50,807 | INFO | Resolved source 'inventory' (Daily Inventory) -> file=07-30_inv.xlsx | sheet=Sheet1
+2026-08-14 01:29:50,807 | INFO | Resolved source 'open_order_summary' (Open Order Summary) -> file=Open_Order_Summary.xlsx | sheet=Sheet1
+2026-08-14 01:29:50,807 | INFO | Resolved source 'buying_groups' (Buying Groups) -> file=Buying_groups.xlsx | sheet=Sheet1
+2026-08-14 01:29:50,807 | INFO | Resolved source 'awards' (Awards) -> file=Awards.xlsx | sheet=Sheet1
+2026-08-14 01:29:50,807 | INFO | Resolved source 'critical_inventory_tracker' (Critical Inventory Tracker (CIP)) -> file=CIP.xlsx | sheet=Sheet1
+2026-08-14 01:29:50,807 | INFO | Resolved source 'sales_summary' (Sales Summary) -> file=sales_summ.xlsx | sheet=Sheet1
+2026-08-14 01:29:50,807 | INFO | Resolved source 'sales_trend' (Sales Trend (Strend)) -> file=Strend.xlsx | sheet=Sheet1
+2026-08-14 01:29:50,872 | INFO | Loaded workbook=raw_OB.xlsx sheet=UOB rows=8 cols=34
+2026-08-14 01:29:50,889 | INFO | Loaded workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1 rows=4 cols=4
+2026-08-14 01:29:50,911 | INFO | Loaded workbook=07-30_inv.xlsx sheet=Sheet1 rows=16 cols=13
+2026-08-14 01:29:50,957 | INFO | Loaded workbook=Open_Order_Summary.xlsx sheet=Sheet1 rows=7 cols=21
+2026-08-14 01:29:51,036 | INFO | Loaded workbook=Buying_groups.xlsx sheet=Sheet1 rows=677 cols=2
+2026-08-14 01:29:51,090 | INFO | Loaded workbook=Awards.xlsx sheet=Sheet1 rows=129 cols=7
+2026-08-14 01:29:51,112 | INFO | Loaded workbook=CIP.xlsx sheet=Sheet1 rows=10 cols=4
+2026-08-14 01:29:51,130 | INFO | Loaded workbook=sales_summ.xlsx sheet=Sheet1 rows=1 cols=37
+2026-08-14 01:29:51,570 | INFO | Loaded workbook=Strend.xlsx sheet=Sheet1 rows=101 cols=66
+2026-08-14 01:29:51,605 | WARNING | EMPTY_COLUMNS | workbook=Orderbook | worksheet=UOB | Completely blank columns: ['Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-14 01:29:51,607 | WARNING | EMPTY_COLUMNS | workbook=Sales Summary | worksheet=Sheet1 | Completely blank columns: ['Action', 'Floor limit Blk', 'Multiple of MOQ Blk', 'Expected Price Blk', 'SOM Indc.']
+2026-08-14 01:29:51,608 | WARNING | BLANK_HEADERS | workbook=Sales Trend (Strend) | worksheet=Sheet1 | Blank raw headers found: 3
+2026-08-14 01:29:51,646 | INFO | Profiled workbook=raw_OB.xlsx sheet=UOB
+2026-08-14 01:29:51,646 | INFO | Profiled workbook=Mat_Desc,_MOQ_,_Material_#.xlsx sheet=Sheet1
+2026-08-14 01:29:51,664 | INFO | Profiled workbook=07-30_inv.xlsx sheet=Sheet1
+2026-08-14 01:29:51,697 | INFO | Profiled workbook=Open_Order_Summary.xlsx sheet=Sheet1
+2026-08-14 01:29:51,711 | INFO | Profiled workbook=Buying_groups.xlsx sheet=Sheet1
+2026-08-14 01:29:51,731 | INFO | Profiled workbook=Awards.xlsx sheet=Sheet1
+2026-08-14 01:29:51,745 | INFO | Profiled workbook=CIP.xlsx sheet=Sheet1
+2026-08-14 01:29:51,780 | INFO | Profiled workbook=sales_summ.xlsx sheet=Sheet1
+2026-08-14 01:29:51,870 | INFO | Profiled workbook=Strend.xlsx sheet=Sheet1
+2026-08-14 01:29:52,014 | INFO | Wrote Workbook_Profile.xlsx to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\Workbook_Profile.xlsx
+2026-08-14 01:29:52,229 | INFO | Wrote data dictionary to G:\Support\orderbook\Jayanth\OrderbookAutomation\docs\DATA_DICTIONARY.md
+2026-08-14 01:29:52,229 | INFO | Join key candidate=NDC workbook_count=7 worksheet_count=7 confidence=77.78
+2026-08-14 01:29:52,229 | INFO | Join key candidate=Material Number workbook_count=2 worksheet_count=2 confidence=22.22
+2026-08-14 01:29:52,229 | INFO | Join key candidate=Customer workbook_count=6 worksheet_count=6 confidence=66.67
+2026-08-14 01:29:52,234 | INFO | Join key candidate=Sold-to Party workbook_count=4 worksheet_count=4 confidence=44.44
+2026-08-14 01:29:52,234 | INFO | Join key candidate=Lookup workbook_count=4 worksheet_count=4 confidence=44.44
+2026-08-14 01:29:52,234 | INFO | Join key candidate=SKU workbook_count=2 worksheet_count=2 confidence=22.22
+2026-08-14 01:29:52,234 | INFO | Join key candidate=Sales Order workbook_count=3 worksheet_count=3 confidence=33.33
+2026-08-14 01:29:52,234 | INFO | Wrote join key analysis to G:\Support\orderbook\Jayanth\OrderbookAutomation\docs\JOIN_KEY_ANALYSIS.md
+2026-08-14 01:29:52,249 | WARNING | Duplicate inventory NDC values detected: 12
+2026-08-14 01:29:52,295 | WARNING | Missing inventory for allocated NDC values: 3
+2026-08-14 01:29:52,311 | INFO | Derived inventory stats | inventory_rows=4 | allocated_rows=3 | unique_ndcs=7 | missing_inventory=3 | missing_allocations=4
+2026-08-14 01:29:52,338 | INFO | Lookup key stats | total_rows=1 | values_normalized=0 | successful_matches=1 | unmatched_records=0 | duplicate_lookup_keys=0
+2026-08-14 01:29:52,369 | INFO | MOQ validation stats | total_rows=1 | values_normalized=0 | successful_matches=1 | unmatched_records=0 | duplicate_lookup_keys=0
+2026-08-14 01:29:52,499 | INFO | Wrote Phase 2 derived workbook to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\Derived_Data.xlsx
+2026-08-14 01:29:52,499 | INFO | Phase 2 completed successfully. Derived workbook saved to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\Derived_Data.xlsx
+2026-08-14 01:29:52,664 | INFO | 07-30_inv.xlsx lookup stats | total_rows=8 | values_normalized=0 | successful_matches=4 | unmatched_records=4 | duplicate_lookup_keys=12
+2026-08-14 01:29:52,671 | INFO | 07-30_inv.xlsx merged using NDC Code | rows updated=4 | rows missing=3 | duplicate keys=12
+2026-08-14 01:29:52,789 | INFO | Open_Order_Summary.xlsx lookup stats | total_rows=8 | values_normalized=0 | successful_matches=0 | unmatched_records=8 | duplicate_lookup_keys=3
+2026-08-14 01:29:52,789 | INFO | Open_Order_Summary.xlsx merged using Sold To Party Name | rows updated=0 | rows missing=4 | duplicate keys=3
+2026-08-14 01:29:52,884 | INFO | sales_summ.xlsx lookup stats | total_rows=8 | values_normalized=0 | successful_matches=4 | unmatched_records=4 | duplicate_lookup_keys=0
+2026-08-14 01:29:52,884 | INFO | sales_summ.xlsx merged using NDC Code | rows updated=4 | rows missing=0 | duplicate keys=0
+2026-08-14 01:29:52,964 | INFO | Strend.xlsx lookup stats | total_rows=8 | values_normalized=91 | successful_matches=4 | unmatched_records=0 | duplicate_lookup_keys=0
+2026-08-14 01:29:52,964 | INFO | Strend.xlsx merged using Lookup | rows updated=4 | rows missing=100 | duplicate keys=0
+2026-08-14 01:29:53,012 | INFO | Buying_groups.xlsx lookup stats | total_rows=8 | values_normalized=10 | successful_matches=0 | unmatched_records=8 | duplicate_lookup_keys=664
+2026-08-14 01:29:53,012 | INFO | Buying_groups.xlsx merged using Sold To Party Name to Customer | rows updated=0 | rows missing=11 | duplicate keys=664
+2026-08-14 01:29:53,059 | INFO | Awards.xlsx lookup stats | total_rows=8 | values_normalized=95 | successful_matches=0 | unmatched_records=4 | duplicate_lookup_keys=0
+2026-08-14 01:29:53,059 | INFO | Awards.xlsx merged using Lookup | rows updated=0 | rows missing=129 | duplicate keys=0
+2026-08-14 01:29:53,113 | INFO | CIP.xlsx lookup stats | total_rows=8 | values_normalized=0 | successful_matches=0 | unmatched_records=8 | duplicate_lookup_keys=0
+2026-08-14 01:29:53,113 | INFO | CIP.xlsx merged using NDC Code | rows updated=0 | rows missing=10 | duplicate keys=0
+2026-08-14 01:29:53,220 | INFO | Saved master workbook to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\Business_Master_Data.xlsx
+2026-08-14 01:29:53,220 | INFO | Phase 3 completed successfully. Business Master workbook saved to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\Business_Master_Data.xlsx
+2026-08-14 01:29:53,224 | INFO | Determined reporting period from 'PO date': 2026-07
+2026-08-14 01:29:53,239 | INFO | Historical sales stats | reporting_period=2026-07 | matched=4 | missing=4 | duplicate_keys=0
+2026-08-14 01:29:53,259 | INFO | Phase 4 enrichment stats | ups_inventory_matches=4 | moq_matches=0 | sc_comments_matches=0 | sc_comments_missing=8 | buying_group_missing=8 | award_missing=8
+2026-08-14 01:29:53,267 | INFO | Business rules applied | controlled_products=0 | price_issues=0 | moq_issues=8 | low_ups_inventory=0
+2026-08-14 01:29:53,277 | INFO | Historical sales merge stats | matched=4 | missing=4
+2026-08-14 01:29:53,289 | INFO | Sales Summary aggregation stats | rows=2 | unique_lookups=1 | duplicate_lookups=0
+2026-08-14 01:29:53,389 | INFO | Wrote Sales Summary workbook to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\Sales_Summary.xlsx
+2026-08-14 01:29:53,389 | INFO | Orderbook grain validation passed | master_rows=8 | orderbook_rows=8 | dropped_records=0
+2026-08-14 01:29:53,646 | INFO | Wrote final POB workbook to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\POB.xlsx
+2026-08-14 01:29:53,646 | INFO | Phase 4 completed successfully. Sales Summary saved to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\Sales_Summary.xlsx | POB saved to G:\Support\orderbook\Jayanth\OrderbookAutomation\output\POB.xlsx
+2026-08-14 01:29:53,646 | INFO | Phase 1 completed successfully in 3.48 seconds
