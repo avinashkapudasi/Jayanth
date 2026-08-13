@@ -8,6 +8,7 @@ import openpyxl
 import pandas as pd
 
 from config import AppConfig
+from modules.source_discovery import ResolvedSource, discover_sources
 
 
 @dataclass(frozen=True)
@@ -33,16 +34,6 @@ class WorkbookData:
     workbook_name: str
     workbook_path: Path
     worksheets: Dict[str, WorksheetData]
-
-
-def _resolve_input_path(config: AppConfig, file_name: str) -> Path:
-    candidate = config.input_dir / file_name
-    if candidate.exists():
-        return candidate
-    fallback = config.project_root.parent / file_name
-    if fallback.exists():
-        return fallback
-    return candidate
 
 
 def _read_hidden_and_merged(workbook_path: Path, sheet_name: str, dataframe_columns: list[str]) -> tuple[tuple[str, ...], tuple[str, ...]]:
@@ -78,35 +69,36 @@ def _extract_header_metadata(workbook_path: Path, sheet_name: str, header_row_in
 
 
 def load_workbooks(config: AppConfig, logger) -> Dict[str, WorkbookData]:
-    """Load every workbook and every worksheet while preserving exact headers."""
+    """Discover and load every configured logical source workbook.
+
+    File and worksheet identification is handled entirely by
+    ``modules/source_discovery.py`` based on business header content, not by
+    fixed filenames or worksheet position. This keeps the pipeline working
+    even when input files are renamed or re-dated (e.g. daily inventory
+    exports).
+    """
     loaded: Dict[str, WorkbookData] = {}
 
-    for workbook_key, spec in config.workbook_specs.items():
-        workbook_path = _resolve_input_path(config, spec.file_name)
-        if not workbook_path.exists():
-            raise FileNotFoundError(f"Required workbook not found: {workbook_path}")
+    resolved_sources: Dict[str, ResolvedSource] = discover_sources(config.source_definitions, config.input_dir, logger)
+
+    for logical_name, resolved in resolved_sources.items():
+        workbook_path = resolved.file_path
+        sheet_name = resolved.sheet_name
+        header_row = resolved.header_row_index
 
         try:
-            excel_file = pd.ExcelFile(workbook_path)
+            dataframe = pd.read_excel(workbook_path, sheet_name=sheet_name, header=header_row)
         except Exception as exc:
-            raise ValueError(f"Invalid or corrupted Excel workbook: {workbook_path} ({exc})") from exc
+            raise ValueError(
+                f"Failed to read workbook '{workbook_path.name}' sheet '{sheet_name}' with header row {header_row}: {exc}"
+            ) from exc
 
-        worksheets: Dict[str, WorksheetData] = {}
+        hidden_columns, merged_header_ranges = _read_hidden_and_merged(workbook_path, sheet_name, list(dataframe.columns))
+        raw_headers, duplicate_raw_headers, blank_raw_headers = _extract_header_metadata(workbook_path, sheet_name, header_row)
 
-        for sheet_name in excel_file.sheet_names:
-            header_row = spec.sheet_header_rows.get(sheet_name, 0)
-            try:
-                dataframe = pd.read_excel(workbook_path, sheet_name=sheet_name, header=header_row)
-            except Exception as exc:
-                raise ValueError(
-                    f"Failed to read workbook '{spec.file_name}' sheet '{sheet_name}' with header row {header_row}: {exc}"
-                ) from exc
-
-            hidden_columns, merged_header_ranges = _read_hidden_and_merged(workbook_path, sheet_name, list(dataframe.columns))
-            raw_headers, duplicate_raw_headers, blank_raw_headers = _extract_header_metadata(workbook_path, sheet_name, header_row)
-
-            worksheets[sheet_name] = WorksheetData(
-                workbook_name=spec.file_name,
+        worksheets: Dict[str, WorksheetData] = {
+            sheet_name: WorksheetData(
+                workbook_name=workbook_path.name,
                 sheet_name=sheet_name,
                 header_row_index=header_row,
                 dataframe=dataframe,
@@ -116,11 +108,12 @@ def load_workbooks(config: AppConfig, logger) -> Dict[str, WorkbookData]:
                 duplicate_raw_headers=duplicate_raw_headers,
                 blank_raw_headers=blank_raw_headers,
             )
-            logger.info("Loaded workbook=%s sheet=%s rows=%s cols=%s", spec.file_name, sheet_name, len(dataframe), len(dataframe.columns))
+        }
+        logger.info("Loaded workbook=%s sheet=%s rows=%s cols=%s", workbook_path.name, sheet_name, len(dataframe), len(dataframe.columns))
 
-        loaded[workbook_key] = WorkbookData(
-            workbook_key=workbook_key,
-            workbook_name=spec.file_name,
+        loaded[logical_name] = WorkbookData(
+            workbook_key=logical_name,
+            workbook_name=workbook_path.name,
             workbook_path=workbook_path,
             worksheets=worksheets,
         )

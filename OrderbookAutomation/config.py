@@ -4,6 +4,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, Sequence
 
+from modules.source_registry import SOURCE_DEFINITIONS, SourceDefinition
+from modules.utils import get_application_base_dir
+
 
 # Backward-compatible business column mappings used by legacy lookup/merge modules.
 ORDERBOOK_COLUMNS = {
@@ -27,7 +30,7 @@ ORDERBOOK_COLUMNS = {
 
 LOOKUP_COLUMNS = {
     "material_code": "HANA Material",
-    "ndc_code": "NDC code",
+    "ndc_code": "NDC Code",
     "material_description": "Material Description",
     "pack_size_moq": "MOQ ",
 }
@@ -109,44 +112,48 @@ class Phase2Config:
 
 
 @dataclass(frozen=True)
-class WorkbookSpec:
-    """Describes one workbook and optional expected worksheets/header rows."""
-
-    file_name: str
-    required_sheets: Sequence[str] = field(default_factory=tuple)
-    sheet_header_rows: Dict[str, int] = field(default_factory=dict)
-
-
-@dataclass(frozen=True)
 class AppConfig:
-    """Phase 1 application configuration."""
+    """Application configuration.
+
+    Note: input workbooks are no longer identified by fixed filenames. See
+    ``modules/source_registry.py`` for the header/worksheet-based source
+    definitions and ``modules/source_discovery.py`` for how they are
+    resolved to actual files at runtime.
+    """
 
     project_root: Path
     input_dir: Path
     output_dir: Path
     logs_dir: Path
     docs_dir: Path
-    workbook_specs: Dict[str, WorkbookSpec]
+    source_definitions: Dict[str, SourceDefinition]
     join_key_hints: Dict[str, Sequence[str]]
     phase2: Phase2Config
 
 
 def get_default_config() -> AppConfig:
-    project_root = Path(__file__).resolve().parent
+    # Resolve the application's home directory dynamically. When bundled into
+    # a standalone .exe (e.g. via PyInstaller), this resolves to the folder
+    # containing the .exe. When run as a normal Python script, it resolves to
+    # the project folder. Either way, business users can simply drop their
+    # input Excel files next to the executable/project and re-run it, without
+    # ever editing paths in code.
+    project_root = get_application_base_dir()
     input_dir = project_root / "input"
-
-    workbook_specs = {
-        "orderbook": WorkbookSpec(file_name="raw_OB.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 0}),
-        "moq": WorkbookSpec(file_name="Mat_Desc,_MOQ_,_Material_#.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 0}),
-        "inventory": WorkbookSpec(file_name="07-30_inv.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 0}),
-        "open_order_summary": WorkbookSpec(file_name="Open_Order_Summary.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 3}),
-        "buying_groups": WorkbookSpec(file_name="Buying_groups.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 0}),
-        "awards": WorkbookSpec(file_name="Awards.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 0}),
-        "critical_inventory_tracker": WorkbookSpec(file_name="CIP.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 0}),
-        "sales_summary": WorkbookSpec(file_name="sales_summ.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 0}),
-        "sales_trend": WorkbookSpec(file_name="Strend.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 3}),
-        "headers_reference": WorkbookSpec(file_name="Headers.xlsx", required_sheets=("Sheet1",), sheet_header_rows={"Sheet1": 0}),
-    }
+    # Fall back to the project root itself if a dedicated "input" folder was
+    # not created, so the app also works if files are dropped directly
+    # alongside the executable.
+    if not input_dir.exists() or not any(input_dir.glob("*.xlsx")):
+        if any(project_root.glob("*.xlsx")):
+            input_dir = project_root
+        elif any(project_root.parent.glob("*.xlsx")):
+            # Development convenience only: supports the current workspace
+            # layout where sample workbooks live one folder above the
+            # application folder. Packaged/production layouts are expected
+            # to use <APPLICATION_ROOT>/input/ or place files directly
+            # alongside the executable, both of which are already handled
+            # above.
+            input_dir = project_root.parent
 
     # Hints only, not hardcoded join behavior.
     join_key_hints = {
@@ -165,7 +172,7 @@ def get_default_config() -> AppConfig:
         output_dir=project_root / "output",
         logs_dir=project_root / "logs",
         docs_dir=project_root / "docs",
-        workbook_specs=workbook_specs,
+        source_definitions=SOURCE_DEFINITIONS,
         join_key_hints=join_key_hints,
         phase2=Phase2Config(
             derived_workbook_name="Derived_Data.xlsx",

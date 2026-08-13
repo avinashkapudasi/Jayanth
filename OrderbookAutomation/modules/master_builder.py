@@ -21,7 +21,7 @@ from config import (
     SALES_SUMMARY_COLUMNS,
     SALES_TREND_COLUMNS,
 )
-from modules.utils import normalize_identifier_key, normalize_text_key
+from modules.utils import normalize_identifier_key, normalize_ndc_key, normalize_text_key
 
 
 @dataclass(frozen=True)
@@ -409,7 +409,9 @@ def _compose_key(df: pd.DataFrame, columns: Sequence[str], modes: Sequence[str])
 
 
 def _normalize_key(series: pd.Series, mode: str) -> pd.Series:
-    if mode in {"ndc", "alnum"}:
+    if mode == "ndc":
+        normalized = series.apply(normalize_ndc_key)
+    elif mode == "alnum":
         normalized = series.apply(normalize_identifier_key)
     else:
         normalized = series.apply(normalize_text_key)

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import pandas as pd
 
 from config import ORDERBOOK_COLUMNS, SALES_SUMMARY_COLUMNS
-from modules.utils import normalize_identifier_key, normalize_text_key
+from modules.utils import normalize_ndc_key, normalize_text_key
 
 
 @dataclass(frozen=True)
@@ -29,7 +29,7 @@ def build_lookup_keys(source_df: pd.DataFrame, logger) -> LookupKeyResult:
     )
 
     working = source_df.copy()
-    working["__ndc_key__"] = working[ndc_column].apply(normalize_identifier_key).astype("string")
+    working["__ndc_key__"] = working[ndc_column].apply(normalize_ndc_key).astype("string")
     working["__sold_to_name_key__"] = working[sold_to_party_name_column].apply(normalize_text_key).astype("string")
     working["Lookup"] = working["__ndc_key__"].fillna("") + working["__sold_to_name_key__"].fillna("")
     working["Lookup"] = working["Lookup"].replace("", pd.NA)

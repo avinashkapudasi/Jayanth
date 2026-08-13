@@ -49,29 +49,32 @@ def validate_loaded_workbooks(config: AppConfig, loaded_workbooks: Dict[str, Wor
             )
         )
 
-    for workbook_key, spec in config.workbook_specs.items():
+    for workbook_key, spec in config.source_definitions.items():
         workbook_data = loaded_workbooks.get(workbook_key)
         if workbook_data is None:
             issues.append(
                 ValidationIssue(
                     severity="ERROR",
-                    workbook=spec.file_name,
+                    workbook=spec.display_name,
                     worksheet="",
                     issue_type="MISSING_WORKBOOK",
-                    details=f"Workbook '{spec.file_name}' was not loaded",
+                    details=(
+                        f"The '{spec.display_name}' source was not loaded. "
+                        f"Hint: {spec.filename_hint or 'no additional hint available'}."
+                    ),
                 )
             )
             continue
 
-        missing_sheets = [sheet for sheet in spec.required_sheets if sheet not in workbook_data.worksheets]
+        missing_sheets = [] if workbook_data.worksheets else ["<any>"]
         for sheet_name in missing_sheets:
             issues.append(
                 ValidationIssue(
                     severity="ERROR",
-                    workbook=spec.file_name,
+                    workbook=spec.display_name,
                     worksheet=sheet_name,
                     issue_type="MISSING_WORKSHEET",
-                    details="Required worksheet not found",
+                    details="Workbook contains no readable worksheets",
                 )
             )
 
@@ -80,7 +83,7 @@ def validate_loaded_workbooks(config: AppConfig, loaded_workbooks: Dict[str, Wor
             issues.append(
                 ValidationIssue(
                     severity="ERROR",
-                    workbook=spec.file_name,
+                    workbook=spec.display_name,
                     worksheet="",
                     issue_type="DUPLICATE_WORKSHEET_NAME",
                     details="Duplicate worksheet names detected",
@@ -88,13 +91,43 @@ def validate_loaded_workbooks(config: AppConfig, loaded_workbooks: Dict[str, Wor
             )
 
         for worksheet_name, worksheet_data in workbook_data.worksheets.items():
+            missing_required_headers = [
+                header for header in spec.required_headers if header not in worksheet_data.dataframe.columns
+            ]
+            if missing_required_headers:
+                issues.append(
+                    ValidationIssue(
+                        severity="ERROR",
+                        workbook=spec.display_name,
+                        worksheet=worksheet_name,
+                        issue_type="MISSING_REQUIRED_COLUMN",
+                        details=(
+                            f"The '{spec.display_name}' workbook is missing required column(s): "
+                            f"{missing_required_headers}"
+                        ),
+                    )
+                )
+
+            missing_optional_headers = [
+                header for header in spec.optional_headers if header not in worksheet_data.dataframe.columns
+            ]
+            if missing_optional_headers:
+                issues.append(
+                    ValidationIssue(
+                        severity="INFO",
+                        workbook=spec.display_name,
+                        worksheet=worksheet_name,
+                        issue_type="MISSING_OPTIONAL_COLUMN",
+                        details=f"Optional column(s) not present (non-blocking): {missing_optional_headers}",
+                    )
+                )
             dataframe = worksheet_data.dataframe
 
             if worksheet_data.duplicate_raw_headers:
                 issues.append(
                     ValidationIssue(
                         severity="WARNING",
-                        workbook=spec.file_name,
+                        workbook=spec.display_name,
                         worksheet=worksheet_name,
                         issue_type="DUPLICATE_HEADERS",
                         details=f"Duplicate raw headers: {sorted(set(str(item) for item in worksheet_data.duplicate_raw_headers))}",
@@ -105,7 +138,7 @@ def validate_loaded_workbooks(config: AppConfig, loaded_workbooks: Dict[str, Wor
                 issues.append(
                     ValidationIssue(
                         severity="WARNING",
-                        workbook=spec.file_name,
+                        workbook=spec.display_name,
                         worksheet=worksheet_name,
                         issue_type="BLANK_HEADERS",
                         details=f"Blank raw headers found: {len(worksheet_data.blank_raw_headers)}",
@@ -116,7 +149,7 @@ def validate_loaded_workbooks(config: AppConfig, loaded_workbooks: Dict[str, Wor
                 issues.append(
                     ValidationIssue(
                         severity="WARNING",
-                        workbook=spec.file_name,
+                        workbook=spec.display_name,
                         worksheet=worksheet_name,
                         issue_type="HIDDEN_COLUMNS",
                         details=f"Hidden columns detected: {worksheet_data.hidden_columns}",
@@ -127,7 +160,7 @@ def validate_loaded_workbooks(config: AppConfig, loaded_workbooks: Dict[str, Wor
                 issues.append(
                     ValidationIssue(
                         severity="WARNING",
-                        workbook=spec.file_name,
+                        workbook=spec.display_name,
                         worksheet=worksheet_name,
                         issue_type="MERGED_HEADERS",
                         details=f"Merged ranges detected: {worksheet_data.merged_header_ranges}",
@@ -139,7 +172,7 @@ def validate_loaded_workbooks(config: AppConfig, loaded_workbooks: Dict[str, Wor
                 issues.append(
                     ValidationIssue(
                         severity="INFO",
-                        workbook=spec.file_name,
+                        workbook=spec.display_name,
                         worksheet=worksheet_name,
                         issue_type="EMPTY_ROWS",
                         details=f"Completely blank rows: {empty_rows}",
@@ -151,7 +184,7 @@ def validate_loaded_workbooks(config: AppConfig, loaded_workbooks: Dict[str, Wor
                 issues.append(
                     ValidationIssue(
                         severity="WARNING",
-                        workbook=spec.file_name,
+                        workbook=spec.display_name,
                         worksheet=worksheet_name,
                         issue_type="EMPTY_COLUMNS",
                         details=f"Completely blank columns: {empty_columns}",

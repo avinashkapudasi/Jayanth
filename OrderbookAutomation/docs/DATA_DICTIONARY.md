@@ -56,52 +56,6 @@ Generated from Phase 1 workbook ingestion.
 | CIP.xlsx | Sheet1 | Comments | str | 36K wk of 08/17 | 0 | 10 | UNKNOWN | UNKNOWN |
 | CIP.xlsx | Sheet1 | Customer ETA | str | wk 8/17 | 0 | 6 | UNKNOWN | Potential customer/account field |
 
-## Headers.xlsx
-
-### Sheet1
-
-| Workbook | Worksheet | Exact Column Name | Detected Data Type | Sample Value | Null Count | Unique Count | Potential Join Key | Potential Business Meaning |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Headers.xlsx | Sheet1 | Sales Order No. | str | Orderbook | 0 | 4 | Sales Order | UNKNOWN |
-| Headers.xlsx | Sheet1 | Item No. | str | Item No. | 2 | 2 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Matl.Code | str | Lookup | 2 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | NDC Code | str | Matl._x000d_
-Code | 2 | 2 | NDC | Potential National Drug Code field |
-| Headers.xlsx | Sheet1 | Material Description | str | NDC Code | 2 | 2 | UNKNOWN | Potential material identifier or description |
-| Headers.xlsx | Sheet1 | Total Stock In-hand | str | Material Description | 2 | 2 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | PackSize(MOQ) | str | Total Stock _x000d_
-In-hand | 2 | 2 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Sales Order Qty | str | UPS Inventory | 2 | 2 | Sales Order | Potential quantity field |
-| Headers.xlsx | Sheet1 | Sales Qty MTD | str | Pack Size (MOQ) | 2 | 2 | UNKNOWN | Potential quantity field |
-| Headers.xlsx | Sheet1 | Forecast Qty | str | Sales Order Qty | 2 | 2 | UNKNOWN | Potential quantity field |
-| Headers.xlsx | Sheet1 | Sold-to party | str | Sales Qty MTD | 2 | 2 | Sold-to Party | Potential customer/account field |
-| Headers.xlsx | Sheet1 | Sold-to party Name | str | Forecast Qty | 2 | 2 | Customer | Potential customer/account field |
-| Headers.xlsx | Sheet1 | S.O. Type | str | Sold-to party | 2 | 2 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Unit Price | str | Sold-to party Name | 2 | 2 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Sales Value (FC) | str | Action | 2 | 2 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | WAC/BG price in EDI | str | S.O. Type | 2 | 2 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | PO number | str |  Unit Price  | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | PO date | str |  Sales Value (FC)  | 3 | 1 | UNKNOWN | Potential date field |
-| Headers.xlsx | Sheet1 | Ship-to party | str | WAC/BG price in EDI | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Ship-to party Name | str | PO Number | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Street | str | PO Date | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | City | str | Ship-to party | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Region | str | Ship-to party Name | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Postal Code | str | Street | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Country | str | City | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Reas. Rej. | str | Region | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Reason for Rejection | str | Postal Code | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Material Blk | str | Country | 3 | 1 | UNKNOWN | Potential material identifier or description |
-| Headers.xlsx | Sheet1 | Floor limit Blk | str | Reas. Rej. | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Multiple of MOQ Blk | str | Reason for Rejection | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Expected Price Blk | str | Material Blk | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | DEA Number (Customer Master) | str | Floor limit Blk | 3 | 1 | UNKNOWN | Potential customer/account field |
-| Headers.xlsx | Sheet1 | Req. Delivery Date | str | Multiple of MOQ Blk | 3 | 1 | UNKNOWN | Potential date field |
-| Headers.xlsx | Sheet1 | SOM Indc. | str | Expected Price Blk | 3 | 1 | UNKNOWN | Potential National Drug Code field |
-| Headers.xlsx | Sheet1 | Unnamed: 34 | str | DEA Number (Customer Master) | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Unnamed: 35 | str | Req. Delivery Date | 3 | 1 | UNKNOWN | UNKNOWN |
-| Headers.xlsx | Sheet1 | Unnamed: 36 | str | SOM Indc. | 3 | 1 | UNKNOWN | UNKNOWN |
-
 ## Mat_Desc,_MOQ_,_Material_#.xlsx
 
 ### Sheet1
@@ -143,37 +97,44 @@ In-hand | 2 | 2 | UNKNOWN | UNKNOWN |
 
 ## raw_OB.xlsx
 
-### Sheet1
+### UOB
 
 | Workbook | Worksheet | Exact Column Name | Detected Data Type | Sample Value | Null Count | Unique Count | Potential Join Key | Potential Business Meaning |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| raw_OB.xlsx | Sheet1 | Sales Order Qty | float64 | 24.0 | 0 | 3 | Sales Order | Potential quantity field |
-| raw_OB.xlsx | Sheet1 | Sales Qty MTD | float64 | 168.0 | 0 | 2 | UNKNOWN | Potential quantity field |
-| raw_OB.xlsx | Sheet1 | Forecast Qty | float64 | 122.0 | 0 | 2 | UNKNOWN | Potential quantity field |
-| raw_OB.xlsx | Sheet1 | Sold-to party | int64 | 9700378 | 0 | 1 | Sold-to Party | Potential customer/account field |
-| raw_OB.xlsx | Sheet1 | Sold-to party Name | str | KROGER | 0 | 1 | Customer | Potential customer/account field |
-| raw_OB.xlsx | Sheet1 | S.O. Type | str | ZTRU | 0 | 1 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Unit Price | float64 | 8.19 | 0 | 2 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Sales Value (FC) | str | 196.56 | 0 | 4 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | WAC/BG price in EDI | float64 | 8.19 | 0 | 2 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | PO number | int64 | 21918 | 0 | 5 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | PO date | str | 7/30/26 | 0 | 1 | UNKNOWN | Potential date field |
-| raw_OB.xlsx | Sheet1 | Ship-to party | int64 | 9800166 | 0 | 3 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Ship-to party Name | str | KROGER_BLUFFTON | 0 | 3 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Street | str | 1111 SOUTH ADAMS STREET | 0 | 3 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | City | str | BLUFFTON | 0 | 3 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Region | str | Indiana | 0 | 3 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Postal Code | int64 | 46714 | 0 | 3 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Country | str | US | 0 | 1 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Reas. Rej. | str | Y6 | 0 | 1 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Reason for Rejection | str | ZUS Y6 Block | 0 | 1 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Material Blk | str | X | 0 | 1 | UNKNOWN | Potential material identifier or description |
-| raw_OB.xlsx | Sheet1 | Floor limit Blk | float64 |  | 8 | 0 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Multiple of MOQ Blk | float64 |  | 8 | 0 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | Expected Price Blk | float64 |  | 8 | 0 | UNKNOWN | UNKNOWN |
-| raw_OB.xlsx | Sheet1 | DEA Number (Customer Master) | str | PP0220828 | 0 | 3 | UNKNOWN | Potential customer/account field |
-| raw_OB.xlsx | Sheet1 | Req. Delivery Date | str | 8/6/26 | 0 | 1 | UNKNOWN | Potential date field |
-| raw_OB.xlsx | Sheet1 | SOM Indc. | float64 |  | 8 | 0 | UNKNOWN | Potential National Drug Code field |
+| raw_OB.xlsx | UOB | Sales Order No. | int64 | 3612003019 | 0 | 5 | Sales Order | UNKNOWN |
+| raw_OB.xlsx | UOB | Item No. | int64 | 30 | 0 | 5 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Matl.Code | int64 | 3011973 | 0 | 2 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | NDC Code | int64 | 64380018701 | 0 | 2 | NDC | Potential National Drug Code field |
+| raw_OB.xlsx | UOB | Material Description | str | ZAFIRLUKAST TABS 10MG 60 | 0 | 2 | UNKNOWN | Potential material identifier or description |
+| raw_OB.xlsx | UOB | Total Stock In-hand | int64 | 19512 | 0 | 2 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | PackSize(MOQ) | int64 | 24 | 0 | 1 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Sales Order Qty | int64 | 24 | 0 | 3 | Sales Order | Potential quantity field |
+| raw_OB.xlsx | UOB | Sales Qty MTD | int64 | 168 | 0 | 2 | UNKNOWN | Potential quantity field |
+| raw_OB.xlsx | UOB | Forecast Qty | int64 | 122 | 0 | 2 | UNKNOWN | Potential quantity field |
+| raw_OB.xlsx | UOB | Sold-to party | int64 | 9700378 | 0 | 1 | Sold-to Party | Potential customer/account field |
+| raw_OB.xlsx | UOB | Sold-to party Name | str | KROGER | 0 | 1 | Customer | Potential customer/account field |
+| raw_OB.xlsx | UOB | S.O. Type | str | ZTRU | 0 | 1 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Unit Price | float64 | 8.19 | 0 | 2 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Sales Value (FC) | float64 | 196.56 | 0 | 4 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | WAC/BG price in EDI | float64 | 8.19 | 0 | 2 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | PO number | int64 | 21918 | 0 | 5 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | PO date | datetime64[us] | 2026-07-30 00:00:00 | 0 | 1 | UNKNOWN | Potential date field |
+| raw_OB.xlsx | UOB | Ship-to party | int64 | 9800166 | 0 | 3 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Ship-to party Name | str | KROGER_BLUFFTON | 0 | 3 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Street | str | 1111 SOUTH ADAMS STREET | 0 | 3 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | City | str | BLUFFTON | 0 | 3 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Region | str | Indiana | 0 | 3 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Postal Code | int64 | 46714 | 0 | 3 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Country | str | US | 0 | 1 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Reas. Rej. | str | Y6 | 0 | 1 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Reason for Rejection | str | ZUS Y6 Block | 0 | 1 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Material Blk | str | X | 0 | 1 | UNKNOWN | Potential material identifier or description |
+| raw_OB.xlsx | UOB | Floor limit Blk | float64 |  | 8 | 0 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Multiple of MOQ Blk | float64 |  | 8 | 0 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | Expected Price Blk | float64 |  | 8 | 0 | UNKNOWN | UNKNOWN |
+| raw_OB.xlsx | UOB | DEA Number (Customer Master) | str | PP0220828 | 0 | 3 | UNKNOWN | Potential customer/account field |
+| raw_OB.xlsx | UOB | Req. Delivery Date | datetime64[us] | 2026-08-06 00:00:00 | 0 | 1 | UNKNOWN | Potential date field |
+| raw_OB.xlsx | UOB | SOM Indc. | float64 |  | 8 | 0 | UNKNOWN | Potential National Drug Code field |
 
 ## sales_summ.xlsx
 
